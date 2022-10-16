@@ -1,7 +1,8 @@
-import React, { useState, useReducer } from "react"
+import React, { useReducer } from "react"
 import AddTask from "./AddTask"
 import TaskList from "./TaskList"
 import { tasksReducer } from "../reducers"
+import { TasksContext, TasksDispatchContext } from "../contexts/TasksContext"
 
 export const TaskManager = () => {
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks)
@@ -29,13 +30,13 @@ export const TaskManager = () => {
 
   return (
     <>
-      <h1>Prague itinerary</h1>
-      <AddTask onAddTask={handleAddTask} />
-      <TaskList
-        tasks={tasks}
-        onChangeTask={handleChangeTask}
-        onDeleteTask={handleDeleteTask}
-      />
+      <TasksContext.Provider value={tasks}>
+        <TasksDispatchContext.Provider value={dispatch}>
+          <h1>Todo application</h1>
+          <AddTask />
+          <TaskList />
+        </TasksDispatchContext.Provider>
+      </TasksContext.Provider>
     </>
   )
 }
