@@ -1,17 +1,15 @@
-import React, { useState, useContext } from "react"
-import { TasksDispatchContext } from "../contexts/TasksContext"
+import React, { useState } from "react"
+import { useTasksDispatch } from "../contexts/TasksContext"
 
-const AddTask = () => {
+export default function AddTask() {
   const [text, setText] = useState("")
-  const dispatch = useContext(TasksDispatchContext)
+  const dispatch = useTasksDispatch()
   return (
     <>
       <input
-        placeholder='Add Task'
+        placeholder='Add task'
         value={text}
-        onChange={(e) => {
-          setText(e.target.value)
-        }}
+        onChange={(e) => setText(e.target.value)}
       />
       <button
         onClick={() => {
@@ -30,4 +28,3 @@ const AddTask = () => {
 }
 
 let nextId = 3
-export default AddTask
