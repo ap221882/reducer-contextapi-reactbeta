@@ -7,10 +7,9 @@ const TasksProvider = ({ children }) => {
   console.log(dispatch)
   return (
     <TasksContext.Provider value={tasks}>
-      <TasksDispatchContext.Provider
-        value={dispatch}
-      ></TasksDispatchContext.Provider>
-      {children}
+      <TasksDispatchContext.Provider value={dispatch}>
+        {children}
+      </TasksDispatchContext.Provider>
     </TasksContext.Provider>
   )
 }
