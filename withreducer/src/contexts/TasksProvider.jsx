@@ -4,7 +4,7 @@ import { TasksContext, TasksDispatchContext } from "./TasksContext"
 
 const TasksProvider = ({ children }) => {
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks)
-  console.log(dispatch)
+  
   return (
     <TasksContext.Provider value={tasks}>
       <TasksDispatchContext.Provider value={dispatch}>
